@@ -32,7 +32,7 @@ app.get('/listUsers', function(req, res) {
     });
 })
 
-app.post('/addusers', function(req, res) {
+app.post('/addUser', function(req, res) {
     fs.readFile(__dirname + "/" + "users.json", "utf8", function(err, data) {
         data = JSON.parse(data);
         data["user4"] = user["user4"];
