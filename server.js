@@ -13,12 +13,6 @@ let user = {
 }
 
 
-let server = app.listen(8081, function() {
-    let host = server.address().address
-    let port = server.address().port
-    console.log("Launch API restful with the following URI http://%s:%s", host, port)
-})
-
 /*
  *
  * method >listUsers
@@ -55,8 +49,14 @@ app.get('/:id', function(req, res) {
 app.delete('/deleteUser', function(req, res) {
     fs.readFile(__dirname + "/" + "users.json", "utf8", function(err, data) {
         data = JSON.parse(data);
-        delete.data["user" + 2];
+        delete data["user" + 2];
         console.log("Delete user" + JSON.stringify(data));
         res.send(JSON.stringify(data));
     });
+})
+
+let server = app.listen(8081, function() {
+    let host = server.address().address
+    let port = server.address().port
+    console.log("Launch API restful with the following URI http://%s:%s", host, port)
 })
