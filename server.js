@@ -51,3 +51,12 @@ app.get('/:id', function(req, res) {
         res.send(JSON.stringify(user));
     });
 })
+
+app.delete('/deleteUser', function(req, res) {
+    fs.readFile(__dirname + "/" + "users.json", "utf8", function(err, data) {
+        data = JSON.parse(data);
+        delete.data["user" + 2];
+        console.log("Delete user" + JSON.stringify(data));
+        res.send(JSON.stringify(data));
+    });
+})
