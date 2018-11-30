@@ -33,20 +33,21 @@ app.get('/listUsers', function(req, res) {
 })
 
 app.post('/addUser', function(req, res) {
-            fs.readFile(__dirname + "/" + "users.json", "utf8", function(err, data) {
-                data = JSON.parse(data);
-                data["user4"] = user["user4"];
-                console.log(data);
-                res.send(JSON.stringify(data));
-            });
+    fs.readFile(__dirname + "/" + "users.json", "utf8", function(err, data) {
+        data = JSON.parse(data);
+        data["user4"] = user["user4"];
+        console.log(data);
+        res.send(JSON.stringify(data));
+    });
+})
 
 
-            app.get('/:id', function(req, res) {
-                fs.readFile(__dirname + "/" + "users.json", "utf8", function(err, data) {
-                    if (err) throw err;
-                    let users = JSON.parse(data);
-                    let user = users["user" + req.params.id]
-                    console.log("User Info by id:" + JSON.stringify(user));
-                    res.send(JSON.stringify(data));
-                });
-            })
+app.get('/:id', function(req, res) {
+    fs.readFile(__dirname + "/" + "users.json", "utf8", function(err, data) {
+        if (err) throw err;
+        let users = JSON.parse(data);
+        let user = users["user" + req.params.id]
+        console.log("User Info by id:" + JSON.stringify(user));
+        res.send(JSON.stringify(data));
+    });
+})
